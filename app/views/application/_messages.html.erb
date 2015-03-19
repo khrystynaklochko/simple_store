@@ -1,0 +1,7 @@
+<% if flash.now[:notice] %>
+  <div class="flakes-message success"><%= flash[:notice] %></div>
+<% end %>
+
+<% if flash.now[:error] %>
+  <div class="flakes-message error"><%= flash[:error] %></div>
+<% end %>

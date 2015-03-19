@@ -1,0 +1,17 @@
+%nav.navbar.navbar-default{role: "navigation"}
+  .container
+    .navbar-header
+      = link_to 'catalog', categories_path, class: 'navbar-brand'
+
+    .collapse.navbar-collapse.navbar-ex1-collapse
+      %ul.nav.navbar-nav.navbar-right
+        - if Rails.env.development?
+          %li{style: 'margin: 19px'}
+        - if user_signed_in?
+          %li
+            = link_to 'logout', destroy_user_session_path, method: :delete
+        - else
+          %li
+            = link_to 'login', new_user_session_path
+          %li
+            = link_to 'sign up', new_user_registration_path

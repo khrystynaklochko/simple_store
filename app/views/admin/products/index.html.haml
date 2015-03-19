@@ -1,0 +1,27 @@
+- content_for :title do
+  Listing Products
+
+%h1 all products
+%br
+
+- if @products.size > 0
+  %table.table.table-striped
+    %thead
+      %tr
+        %th.col-xs-3 title
+        %th.col-xs-4 description
+        %th.col-xs-3 category
+        %th.col-xs-2
+
+    %tbody
+      - @products.each do |product|
+        %tr
+          %td= product.title
+          %td= product.description
+          %td= product.category.name
+          %td.text-right
+            = link_to 'edit', edit_admin_product_path(product)
+            |
+            = link_to 'destroy', [:admin, product], method: :delete, data: { confirm: 'Are you sure?' }
+
+= link_to 'new product', new_admin_product_path, class: 'btn btn-info'

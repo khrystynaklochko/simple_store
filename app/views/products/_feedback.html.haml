@@ -1,0 +1,25 @@
+- if can? :create, Review
+  %h4 Leave your feedback for this product
+  = render 'reviews/form'
+  %hr
+
+.list-group
+  - @product.reviews.each do |review|
+    - unless review.id.nil?
+      .list-group-item
+        .row-action-primary
+          %i.mdi-communication-message
+        .row-content
+          .action-secondary
+            %i.mdi-material-info
+          by
+          = review.user && review.user.email || 'guest'
+          - if can? :manage, Review
+            .pull-right
+              [
+              = link_to 'edit', edit_product_review_path(@product, review)
+              |
+              = link_to 'delete', product_review_path(@product, review), method: :delete, data: { confirm: 'Are you sure?' }
+              ]
+          %p.list-group-item-text= review.message
+      .list-group-separator

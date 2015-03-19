@@ -1,0 +1,4 @@
+= simple_form_for [:admin, @category] do |f|
+  = f.error_notification
+  .row= f.input :name, wrapper_html: { class: 'col-md-14' }
+  = f.submit class: 'btn btn-info'

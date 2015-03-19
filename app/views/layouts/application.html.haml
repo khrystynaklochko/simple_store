@@ -1,0 +1,10 @@
+%html
+  %head
+    %title= content_for?(:title) ? yield(:title) + ' - Catalog' : 'Catalog'
+    = render 'layouts/head'
+  %body
+    = render 'layouts/navbar'
+    .container
+      //.p#notice= notice
+      = yield
+    = render 'layouts/scripts'

@@ -1,0 +1,6 @@
+= simple_form_for [:admin, @product] do |f|
+  = f.error_notification
+  .row= f.input :title, wrapper_html: { class: 'col-md-14' }
+  .row= f.input :description, wrapper_html: { class: 'col-md-14' }, input_html: { rows: 5 }
+  .row= f.input :category_id, collection: Category.all, include_blank: false, wrapper_html: { class: 'col-md-6' }
+  = f.submit class: 'btn btn-info'

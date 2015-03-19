@@ -1,0 +1,20 @@
+- content_for :title do
+  - if @products.present? or not @category.present?
+    all products
+  - else
+    products by
+    = @category.name
+
+.row
+  = render 'list', locals: {category: @category}
+  .col-xs-9
+    %h3 products
+    %br
+    - if @category.present? or @products.present?
+      - @products = @category.products unless @products.present?
+      - @products.each do |product|
+        .panel.panel-default
+          .panel-heading
+            %h3.panel-title
+              = link_to product.title, product_path(product)
+          .panel-body= product.description

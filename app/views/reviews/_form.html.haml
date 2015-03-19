@@ -1,0 +1,4 @@
+= simple_form_for @review, url: @review.persisted? ? product_review_path(@product, @review) : product_reviews_path(@product) do |f|
+  = f.error_notification
+  = f.input :message, label: false, input_html: { rows: 5 }
+  = f.submit 'add review', class: 'btn btn-info'

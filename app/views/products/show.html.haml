@@ -1,0 +1,12 @@
+- content_for :title do
+  =@product.title
+
+.row
+  = render 'categories/list', locals: {category: @product.category}
+  .col-xs-9
+    %h3= @product.title
+    %br
+    %p
+      %small= @product.description
+    %hr
+    = render 'products/feedback'

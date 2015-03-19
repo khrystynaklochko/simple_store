@@ -1,0 +1,18 @@
+<h1>Log In</h1>
+
+<fieldset>
+  <%= form_for User.new, url: login_path do |f| %>
+    <ul>
+      <li>
+        <%= f.label :email, "Email" %>
+        <%= f.text_field :email %>
+      </li>
+      <li>
+        <%= f.label :password, "Password" %>
+        <%= f.password_field :password %>
+      </li>
+    </ul>
+
+    <%= f.submit "Log In", class: 'button-green' %>
+  <% end %>
+</fieldset>
